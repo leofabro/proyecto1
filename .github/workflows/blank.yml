@@ -21,5 +21,19 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Runs a single command using the runners shell
-      - name: "Visualizar mensaje"
-        run: echo "Hello, world!"
+      - name: Paso de construccion
+        run: echo "Este es un paso de construccion"
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Paso testeo
+        run: echo "Este es el paso de testeo"
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test  #Indica que este trabajo depende de que el trabajo ''
+
+    steps:
+      - name: Paso de Despliegue
+        run: echo "Este es el paso de despliegue"
